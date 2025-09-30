@@ -1,5 +1,7 @@
 console.log("Сайт загружен!");
 
+emailjs.init("alcjXOSgKQN_R8wVd");
+
 // Простая анимация при загрузке
 document.addEventListener('DOMContentLoaded', function() {
     document.body.style.opacity = '0';
@@ -22,6 +24,7 @@ function initContactForm() {
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
             const messageDiv = document.getElementById('formMessage');
+            const submitBtn = this.querySelector('button[type="submit"]');
             
             // Валидация полей
             const inputs = this.querySelectorAll('input, textarea');
@@ -36,21 +39,55 @@ function initContactForm() {
                 }
             });
             
-            if (isValid) {
-                messageDiv.textContent = '? Сообщение отправлено! Спасибо за обратную связь!';
-                messageDiv.style.color = 'green';
-                
-                // Очищаем форму
-                this.reset();
-                
-                // Через 5 секунд убираем сообщение
-                setTimeout(() => {
-                    messageDiv.textContent = '';
-                }, 5000);
-            } else {
+            if (!isValid) {
                 messageDiv.textContent = '? Пожалуйста, заполните все поля!';
                 messageDiv.style.color = 'red';
+                return;
             }
+            
+            // Если валидация прошла - отправляем письмо
+            messageDiv.textContent = '?? Отправка сообщения...';
+            messageDiv.style.color = 'blue';
+            
+            // Сохраняем оригинальный текст кнопки
+            const originalBtnText = submitBtn.textContent;
+            submitBtn.textContent = 'Отправка...';
+            submitBtn.disabled = true;
+            
+            // Собираем данные формы
+            const formData = {
+                name: this.querySelector('input[type="text"]').value,
+                email: this.querySelector('input[type="email"]').value,
+                message: this.querySelector('textarea').value,
+                date: new Date().toLocaleString('ru-RU'),
+                page: window.location.href
+            };
+            
+            // ОТПРАВКА ЧЕРЕЗ EMAILJS
+            emailjs.send('service_7hm3tae', 'template_dxa0puk', formData)
+                .then(function(response) {
+                    console.log('SUCCESS!', response.status, response.text);
+                    messageDiv.textContent = '? Сообщение отправлено! Я свяжусь с вами скоро.';
+                    messageDiv.style.color = 'green';
+                    
+                    // Очищаем форму
+                    contactForm.reset();
+                })
+                .catch(function(error) {
+                    console.error('FAILED...', error);
+                    messageDiv.textContent = '? Ошибка отправки. Попробуйте ещё раз или напишите напрямую.';
+                    messageDiv.style.color = 'red';
+                })
+                .finally(function() {
+                    // Восстанавливаем кнопку
+                    submitBtn.textContent = originalBtnText;
+                    submitBtn.disabled = false;
+                    
+                    // Через 5 секунд убираем сообщение
+                    setTimeout(() => {
+                        messageDiv.textContent = '';
+                    }, 5000);
+                });
         });
     }
 }

@@ -3,11 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Сайт-визитка - Кудрявцев Павел</title>
-    <link rel="stylesheet" href="style.css">
-    <title>Сайт-визитка - Кудрявцев Павел</title>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <title>Визитка</title>
+    <link rel="stylesheet" href="style.css">  
 </head>
 <body>
     <button class="theme-toggle" id="themeToggle">🌙 Тёмная тема</button>
@@ -17,7 +15,8 @@
             <h1>🚀 Мой первый сайт!</h1>
             <p>Привет! Этот сайт создан для задания по современным технологиям программирования.</p>
             <p><strong>Студент:</strong> Кудрявцев Павел</p>
-            <p><strong>Дата:</strong> 2025</p>
+            <p><strong>Группа:</strong> 0401/2006</p>
+            <p><strong>Дата:</strong> 09/2025</p>
         </header>
         
         <button class="btn" onclick="showMessage()">Нажми меня!</button>
@@ -25,11 +24,11 @@
         
         <section class="contact-form fade-in">
             <h2>📧 Свяжитесь со мной</h2>
-            <form id="contactForm">
-                <input type="text" placeholder="Ваше имя" required>
-                <input type="email" placeholder="Ваш email" required>
-                <textarea placeholder="Ваше сообщение" rows="5" required></textarea>
-                <button type="submit" class="btn">Отправить сообщение</button>
+            <form id="contactForm" action="https://formspree.io/f/your-form-id" method="POST">
+                <input type="text" name="name" placeholder="Ваше имя" required>
+                <input type="email" name="email" placeholder="Ваш email" required>
+                <textarea name="message" placeholder="Ваше сообщение" rows="5" required></textarea>
+                <button type="submit">Отправить сообщение</button>
             </form>
             <div id="formMessage"></div>
         </section>
