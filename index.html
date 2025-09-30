@@ -40,14 +40,26 @@
     </style>
 </head>
 <body>
+    <button class="theme-toggle" id="themeToggle">🌙 Тёмная тема</button>
+
     <div class="container">
         <h1>🚀 Мой первый сайт!</h1>
         <p>Привет! Этот сайт создан для задания по современным технологиям программирования.</p>
-        <p><strong>Студент:</strong> [Ваше Имя]</p>
-        <p><strong>Дата:</strong> 2024</p>
+        <p><strong>Студент:</strong> Кудрявцев Павел</p>
+        <p><strong>Дата:</strong> 2025</p>
         
         <button class="btn" onclick="showMessage()">Нажми меня!</button>
         <p id="message"></p>
+        <section class="contact-form fade-in">
+        <h2>📧 Свяжитесь со мной</h2>
+        <form id="contactForm">
+            <input type="text" placeholder="Ваше имя" required>
+            <input type="email" placeholder="Ваш email" required>
+            <textarea placeholder="Ваше сообщение" rows="5" required></textarea>
+            <button type="submit">Отправить сообщение</button>
+        </form>
+        <div id="formMessage" style="margin-top: 15px;"></div>
+        </section>
     </div>
 
     <script>
@@ -64,6 +76,16 @@
                 document.body.style.opacity = '1';
             }, 100);
         });
+    </script>
+    <script>
+    // ПЕРЕКЛЮЧЕНИЕ ТЕМЫ
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-theme');
+        themeToggle.textContent = document.body.classList.contains('dark-theme') 
+            ? '☀️ Светлая тема' 
+            : '🌙 Тёмная тема';
+    });
     </script>
 </body>
 </html>
