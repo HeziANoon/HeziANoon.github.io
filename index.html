@@ -154,16 +154,20 @@
             </ul>
         </section>
 
-        <!-- Контакты -->
-        <section class="contact-form fade-in">
-            <h2>📧 Свяжитесь со мной</h2>
-            <form id="contactForm">
-                <input type="text" placeholder="Ваше имя" required>
-                <input type="email" placeholder="Ваш email" required>
-                <textarea placeholder="Ваше сообщение" rows="5" required></textarea>
-                <button type="submit" class="btn">Отправить сообщение</button>
-            </form>
-            <div id="formMessage"></div>
+        <!-- Контакты (простая версия) -->
+        <section class="contacts fade-in">
+            <h2>📞 Контакты</h2>
+            <div class="contacts-info">
+                <div class="contact-item">
+                    <strong>📧 Email:</strong> твой-email@example.com
+                </div>
+                <div class="contact-item">
+                    <strong>💼 GitHub:</strong> github.com/твой-username
+                </div>
+                <div class="contact-item">
+                    <strong>📱 Telegram:</strong> @твой-username
+                </div>
+            </div>
         </section>
 
         <!-- Интерактивная кнопка -->
@@ -173,7 +177,6 @@
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
