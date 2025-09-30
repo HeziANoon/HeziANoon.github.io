@@ -1,8 +1,8 @@
-console.log("���� ����㦥�!");
+console.log("Сайт загружен!");
 
 emailjs.init("alcjXOSgKQN_R8wVd");
 
-// ����� ������� �� ����㧪�
+// Простая анимация при загрузке
 document.addEventListener('DOMContentLoaded', function() {
     document.body.style.opacity = '0';
     document.body.style.transition = 'opacity 1s';
@@ -11,13 +11,13 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.style.opacity = '1';
     }, 100);
     
-    // ���樠�����㥬 �� �㭪樨 ��᫥ ����㧪� DOM
+    // Инициализируем все функции после загрузки DOM
     initContactForm();
     initThemeToggle();
     initScrollAnimations();
 });
 
-// ����� �������� �����
+// ФОРМА ОБРАТНОЙ СВЯЗИ
 function initContactForm() {
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
@@ -26,7 +26,7 @@ function initContactForm() {
             const messageDiv = document.getElementById('formMessage');
             const submitBtn = this.querySelector('button[type="submit"]');
             
-            // �������� �����
+            // Валидация полей
             const inputs = this.querySelectorAll('input, textarea');
             let isValid = true;
             
@@ -40,21 +40,21 @@ function initContactForm() {
             });
             
             if (!isValid) {
-                messageDiv.textContent = '? ��������, �������� �� ����!';
+                messageDiv.textContent = '❌ Пожалуйста, заполните все поля!';
                 messageDiv.style.color = 'red';
                 return;
             }
             
-            // �᫨ �������� ��諠 - ��ࠢ�塞 ���쬮
-            messageDiv.textContent = '?? ��ࠢ�� ᮮ�饭��...';
+            // Если валидация прошла - отправляем письмо
+            messageDiv.textContent = '📤 Отправка сообщения...';
             messageDiv.style.color = 'blue';
             
-            // ���࠭塞 �ਣ������ ⥪�� ������
+            // Сохраняем оригинальный текст кнопки
             const originalBtnText = submitBtn.textContent;
-            submitBtn.textContent = '��ࠢ��...';
+            submitBtn.textContent = 'Отправка...';
             submitBtn.disabled = true;
             
-            // ����ࠥ� ����� ���
+            // Собираем данные формы
             const formData = {
                 name: this.querySelector('input[type="text"]').value,
                 email: this.querySelector('input[type="email"]').value,
@@ -63,27 +63,27 @@ function initContactForm() {
                 page: window.location.href
             };
             
-            // �������� ����� EMAILJS
+            // ОТПРАВКА ЧЕРЕЗ EMAILJS
             emailjs.send('service_7hm3tae', 'template_dxa0puk', formData)
                 .then(function(response) {
                     console.log('SUCCESS!', response.status, response.text);
-                    messageDiv.textContent = '? ����饭�� ��ࠢ����! � ����� � ���� ᪮�.';
+                    messageDiv.textContent = '✅ Сообщение отправлено! Я свяжусь с вами скоро.';
                     messageDiv.style.color = 'green';
                     
-                    // ��頥� ���
+                    // Очищаем форму
                     contactForm.reset();
                 })
                 .catch(function(error) {
                     console.error('FAILED...', error);
-                    messageDiv.textContent = '? �訡�� ��ࠢ��. ���஡�� ��� ࠧ ��� ������ �������.';
+                    messageDiv.textContent = '❌ Ошибка отправки. Попробуйте ещё раз или напишите напрямую.';
                     messageDiv.style.color = 'red';
                 })
                 .finally(function() {
-                    // ����⠭�������� ������
+                    // Восстанавливаем кнопку
                     submitBtn.textContent = originalBtnText;
                     submitBtn.disabled = false;
                     
-                    // ��१ 5 ᥪ㭤 㡨ࠥ� ᮮ�饭��
+                    // Через 5 секунд убираем сообщение
                     setTimeout(() => {
                         messageDiv.textContent = '';
                     }, 5000);
@@ -92,30 +92,30 @@ function initContactForm() {
     }
 }
 
-// ������������ ���� (�������⥫쭠� ��)
+// ПЕРЕКЛЮЧЕНИЕ ТЕМЫ (дополнительная фича)
 function initThemeToggle() {
     const themeToggle = document.getElementById('themeToggle');
     if (themeToggle) {
-        // �஢��塞 ��࠭��� ⥬�
+        // Проверяем сохранённую тему
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme === 'dark') {
             document.body.classList.add('dark-theme');
-            themeToggle.textContent = '?? ���⫠� ⥬�';
+            themeToggle.textContent = '☀️ Светлая тема';
         }
         
         themeToggle.addEventListener('click', () => {
             document.body.classList.toggle('dark-theme');
             const isDark = document.body.classList.contains('dark-theme');
             
-            themeToggle.textContent = isDark ? '?? ���⫠� ⥬�' : '?? �񬭠� ⥬�';
+            themeToggle.textContent = isDark ? '☀️ Светлая тема' : '🌙 Тёмная тема';
             
-            // ���࠭塞 � localStorage
+            // Сохраняем в localStorage
             localStorage.setItem('theme', isDark ? 'dark' : 'light');
         });
     }
 }
 
-// �������� ��� ������� (�������⥫쭠� ��)
+// АНИМАЦИИ ПРИ СКРОЛЛЕ (дополнительная фича)
 function initScrollAnimations() {
     const animatedElements = document.querySelectorAll('.fade-in');
     
@@ -132,7 +132,7 @@ function initScrollAnimations() {
     }
 }
 
-// ����� �㭪�� ��� ������ 㢥��������
+// Простая функция для показа уведомлений
 function showNotification(message, type = 'success') {
     const notification = document.createElement('div');
     notification.textContent = message;
@@ -153,4 +153,19 @@ function showNotification(message, type = 'success') {
     setTimeout(() => {
         notification.remove();
     }, 3000);
+}
+
+function showMessage() {
+    const facts = [
+        "🎮 Ни разу не проходил майнкрафт",
+        "💻 Мой первый язык - Python",
+        "🚀 Мечтаю работать в крутой компании",
+        "🎵 Программирую под тёмного принца",
+        "📱 Апнул 30к в Brawl Stars",
+        "🌍 Хочу посетить Сербию",
+        "🎯 Цель - стать ML инженером"
+    ];
+    
+    const randomFact = facts[Math.floor(Math.random() * facts.length)];
+    document.getElementById('message').textContent = randomFact;
 }
