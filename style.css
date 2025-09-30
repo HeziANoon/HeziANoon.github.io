@@ -51,6 +51,11 @@ h2 {
     font-size: 1.8em;
 }
 
+h3 {
+    color: white;
+    margin-bottom: 10px;
+}
+
 /* Текстовые элементы */
 p {
     margin-bottom: 15px;
@@ -102,237 +107,6 @@ strong {
     transform: translateY(-2px);
 }
 
-/* Секция формы обратной связи */
-.contact-form {
-    margin-top: 40px;
-    padding-top: 30px;
-    border-top: 2px solid rgba(255, 255, 255, 0.3);
-}
-
-/* Поля формы */
-.contact-form input,
-.contact-form textarea {
-    width: 100%;
-    padding: 15px;
-    margin: 10px 0;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 10px;
-    font-size: 16px;
-    background: rgba(255, 255, 255, 0.1);
-    color: white;
-    backdrop-filter: blur(10px);
-    transition: all 0.3s ease;
-}
-
-.contact-form input:focus,
-.contact-form textarea:focus {
-    outline: none;
-    border-color: rgba(255, 255, 255, 0.6);
-    background: rgba(255, 255, 255, 0.15);
-}
-
-.contact-form input::placeholder,
-.contact-form textarea::placeholder {
-    color: rgba(255, 255, 255, 0.7);
-}
-
-/* Кнопка отправки формы */
-.contact-form button[type="submit"] {
-    background: white;
-    color: #667eea;
-    padding: 15px 30px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: bold;
-    margin-top: 15px;
-    transition: all 0.3s ease;
-    width: 100%;
-}
-
-.contact-form button[type="submit"]:hover {
-    background: #f8f9fa;
-    transform: translateY(-2px);
-}
-
-/* Сообщение формы */
-#formMessage {
-    margin-top: 15px;
-    padding: 15px;
-    border-radius: 10px;
-    text-align: center;
-    font-weight: bold;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-}
-
-/* Сообщение от кнопки "Нажми меня" */
-#message {
-    margin: 15px 0;
-    padding: 15px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
-    text-align: center;
-    font-weight: bold;
-    backdrop-filter: blur(10px);
-    min-height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* Анимации */
-.fade-in {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.6s ease-out;
-}
-
-.fade-in.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Progress bars для навыков (если добавишь позже) */
-.skills {
-    margin: 30px 0;
-}
-
-.skill {
-    margin: 20px 0;
-}
-
-.progress-bar {
-    width: 100%;
-    height: 20px;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 10px;
-    overflow: hidden;
-    margin: 10px 0;
-}
-
-.progress {
-    height: 100%;
-    background: linear-gradient(90deg, #667eea, #764ba2);
-    border-radius: 10px;
-    transition: width 2s ease-in-out;
-    width: 0%;
-}
-
-.skill-info {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 5px;
-}
-
-/* Header стили */
-header {
-    text-align: center;
-    margin-bottom: 30px;
-}
-
-/* Адаптивность для мобильных */
-@media (max-width: 768px) {
-    body {
-        padding: 10px;
-    }
-    
-    .container {
-        padding: 25px;
-        margin-top: 70px;
-    }
-    
-    h1 {
-        font-size: 2em;
-    }
-    
-    h2 {
-        font-size: 1.5em;
-    }
-    
-    .theme-toggle {
-        top: 10px;
-        right: 10px;
-        padding: 10px 15px;
-        font-size: 12px;
-    }
-    
-    .btn {
-        padding: 10px 20px;
-        font-size: 14px;
-        margin: 5px;
-    }
-    
-    .contact-form input,
-    .contact-form textarea {
-        padding: 12px;
-        font-size: 14px;
-    }
-}
-
-@media (max-width: 480px) {
-    .container {
-        padding: 20px;
-        margin-top: 80px;
-    }
-    
-    h1 {
-        font-size: 1.8em;
-    }
-    
-    .theme-toggle {
-        position: relative;
-        top: auto;
-        right: auto;
-        margin-bottom: 20px;
-        width: 100%;
-    }
-}
-
-/* Анимация загрузки */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Дополнительные утилиты */
-.text-center {
-    text-align: center;
-}
-
-.mt-20 {
-    margin-top: 20px;
-}
-
-.mb-20 {
-    margin-bottom: 20px;
-}
-
-.hidden {
-    display: none;
-}
-
-/* Стили для возможного расширения - карточки проектов */
-.project-card {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 20px;
-    border-radius: 10px;
-    margin: 15px 0;
-    backdrop-filter: blur(10px);
-    transition: all 0.3s ease;
-}
-
-.project-card:hover {
-    transform: translateY(-5px);
-    background: rgba(255, 255, 255, 0.15);
-}
 /* Герой секция */
 .hero {
     text-align: center;
@@ -539,8 +313,128 @@ header {
     border-top: 2px solid rgba(255, 255, 255, 0.3);
 }
 
-/* Адаптивность */
+/* Форма обратной связи */
+.contact-form {
+    margin-top: 40px;
+    padding-top: 30px;
+    border-top: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 15px;
+    margin: 10px 0;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    font-size: 16px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.contact-form button[type="submit"] {
+    background: white;
+    color: #667eea;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 15px;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.contact-form button[type="submit"]:hover {
+    background: #f8f9fa;
+    transform: translateY(-2px);
+}
+
+/* Сообщение формы */
+#formMessage {
+    margin-top: 15px;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: bold;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+/* Сообщение от кнопки "Нажми меня" */
+#message {
+    margin: 15px 0;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    text-align: center;
+    font-weight: bold;
+    backdrop-filter: blur(10px);
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Анимации */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease-out;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Адаптивность для мобильных */
 @media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    
+    .container {
+        padding: 25px;
+        margin-top: 70px;
+    }
+    
+    h1 {
+        font-size: 2em;
+    }
+    
+    h2 {
+        font-size: 1.5em;
+    }
+    
+    .theme-toggle {
+        top: 10px;
+        right: 10px;
+        padding: 10px 15px;
+        font-size: 12px;
+    }
+    
+    .btn {
+        padding: 10px 20px;
+        font-size: 14px;
+        margin: 5px;
+    }
+    
     .about-content {
         grid-template-columns: 1fr;
         gap: 20px;
@@ -554,5 +448,30 @@ header {
         flex-direction: column;
         align-items: flex-start;
         gap: 5px;
+    }
+    
+    .contact-form input,
+    .contact-form textarea {
+        padding: 12px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 20px;
+        margin-top: 80px;
+    }
+    
+    h1 {
+        font-size: 1.8em;
+    }
+    
+    .theme-toggle {
+        position: relative;
+        top: auto;
+        right: auto;
+        margin-bottom: 20px;
+        width: 100%;
     }
 }
