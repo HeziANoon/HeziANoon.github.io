@@ -19,12 +19,12 @@ function initThemeToggle() {
     const themeToggle = document.getElementById('themeToggle');
     if (themeToggle) {
         themeToggle.addEventListener('click', () => {
-            document.body.classList.toggle('dark-theme');
-            themeToggle.textContent = document.body.classList.contains('dark-theme') 
-                ? '☀️ Светлая тема' 
-                : '🌙 Тёмная тема';
-        });
-    }
+            document.body.classList.toggle('light-theme');
+            themeToggle.textContent = document.body.classList.contains('light-theme') 
+                ? '🌙 Хакерская тема' 
+                : '☀️ Светлая тема';
+    });
+}
 }
 
 // АНИМАЦИИ ПРИ СКРОЛЛЕ
